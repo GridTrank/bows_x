@@ -1,0 +1,44 @@
+
+import App from './App'
+
+import { createSSRApp } from 'vue'
+export function createApp() {
+  const app = createSSRApp(App)
+  return {
+    app
+  }
+}  
+export function main(app: IApp) {
+    defineAppConfig();
+    definePageRoutes();
+    
+    (createApp()['app'] as VueApp).mount(app);
+}
+
+import { AppConfig } from "io.dcloud.uniapp.appframe"
+export class UniAppConfig extends AppConfig {
+    override name: string = "bows_x"
+    override appid: string = "__UNI__4FE4B91"
+    override versionName: string = "1.0.0"
+    override versionCode: string = "100"
+    override uniCompileVersion: string = "3.94"
+    // override tabBar = __uniTabBar
+    // override launchPage = __uniLaunchPage
+    
+    constructor() {}
+}
+
+import GenPagesIndexIndexClass from './pages/index/index.uvue?type=page'
+function definePageRoutes() {
+__uniRoutes.push({ path: "pages/index/index", component: GenPagesIndexIndexClass, meta: { isQuit: true } as PageMeta, style: utsMapOf([["navigationBarTitleText","uni-app"]]) } as PageRoute)
+}
+const __uniTabBar: Map<string, any | null> | null = null
+const __uniLaunchPage: Map<string, any | null> = utsMapOf([["url","pages/index/index"],["style",utsMapOf([["navigationBarTitleText","uni-app"]])]])
+@Suppress("UNCHECKED_CAST")
+function defineAppConfig(){
+  __uniConfig.entryPagePath = '/pages/index/index'
+  __uniConfig.globalStyle = utsMapOf([["navigationBarTextStyle","black"],["navigationBarTitleText","uni-app"],["navigationBarBackgroundColor","#F8F8F8"],["backgroundColor","#F8F8F8"]])
+  __uniConfig.tabBar = __uniTabBar as Map<string, any> | null
+  __uniConfig.conditionUrl = ''
+  __uniConfig.uniIdRouter = new Map()
+}

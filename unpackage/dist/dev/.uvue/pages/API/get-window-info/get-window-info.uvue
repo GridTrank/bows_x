@@ -1,0 +1,103 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	type Item = {
+		label : string,
+		value : string,
+	}
+	export default {
+		data() {
+			return {
+				title: 'getWindowInfo',
+				items: [] as Item[],
+			}
+		},
+		onUnload: function () {
+		},
+		methods: {
+			getWindowInfo: function () {
+				const res = uni.getWindowInfo();
+        this.items = [] as Item[];
+				for(const key in res){
+				  const value = res[key];
+          if(value != null){
+            const item = {
+            	label: key,
+            	value: "" + ((typeof value == "object")? JSON.stringify(value) : value)
+            } as Item;
+            this.items.push(item);
+          }
+				}
+			},
+      //自动化测试例专用
+      jest_getWindowInfo():GetWindowInfoResult{
+        return uni.getWindowInfo();
+      },
+		}
+	}
+
+@Suppress("UNUSED_PARAMETER") function GenPagesAPIGetWindowInfoGetWindowInfoRender(): VNode | null {
+const _ctx = this
+const _component_button = resolveComponent("button")
+
+  return createElementVNode("view", null, [
+    " 12121 ",
+    createElementVNode("view", utsMapOf({ class: "uni-common-mt" }), [
+      createElementVNode("view", utsMapOf({ class: "uni-list" }), [
+        createElementVNode(Fragment, null, RenderHelpers.renderList(_ctx.items, (item, _, _): VNode => {
+          return createElementVNode("view", utsMapOf({
+            class: "uni-list-cell",
+            style: "align-items: center;"
+          }), [
+            createElementVNode("view", utsMapOf({ class: "uni-pd" }), [
+              createElementVNode("view", utsMapOf({
+                class: "uni-label",
+                style: "width:180px;"
+              }), toDisplayString(item.label), 1 /* TEXT */)
+            ]),
+            createElementVNode("view", utsMapOf({ class: "uni-list-cell-db" }), [
+              createElementVNode("textarea", utsMapOf({
+                "auto-height": true,
+                disabled: true,
+                placeholder: "未获取",
+                value: item.value
+              }), null, 8 /* PROPS */, ["value"])
+            ])
+          ])
+        }), 256 /* UNKEYED_FRAGMENT */)
+      ]),
+      createElementVNode("view", utsMapOf({ class: "uni-padding-wrap" }), [
+        createElementVNode("view", utsMapOf({ class: "uni-btn-v" }), [
+          createVNode(_component_button, utsMapOf({
+            type: "primary",
+            onClick: _ctx.getWindowInfo
+          }), utsMapOf({
+            default: withCtx((): any[] => ["获取窗口信息"]),
+            _: 1 /* STABLE */
+          }), 8 /* PROPS */, ["onClick"])
+        ])
+      ])
+    ])
+  ])
+}
+const GenPagesAPIGetWindowInfoGetWindowInfoStyles = [utsMapOf([["uni-pd", utsMapOf([["", utsMapOf([["paddingLeft", "30rpx"]])]])]])]

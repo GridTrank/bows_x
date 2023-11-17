@@ -1,0 +1,20 @@
+{
+  "version": "1",
+  "env": {
+    "compiler_version": "3.94"
+  },
+  "files": {
+    "pages/API/get-window-info/get-window-info.kt": {
+      "class": "GenPagesAPIGetWindowInfoGetWindowInfo",
+      "md5": "e2297da2e58fd0c7c5e0d050b7c1906bf6a7c8e8"
+    },
+    "pages/index/index.kt": {
+      "class": "GenPagesIndexIndex",
+      "md5": "309e125c10375f1e0f581421b6a92b4e7dd5f7ca"
+    },
+    "index.kt": {
+      "class": "",
+      "md5": "8129781639bdbeda305b929a4a413f29ac7f22e6"
+    }
+  }
+}
